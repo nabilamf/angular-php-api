@@ -1,0 +1,49 @@
+<h1>Customer Information Management</h1>
+<div>
+
+  <table border='1' width='100%' style='border-collapse: collapse;'>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Actions</th>
+
+    </tr>
+
+    <tr *ngFor="let customer of customer">
+      <td>{{ customer.id }}</td>
+      <td>{{ customer.name }}</td>
+      <td>{{ customer.phone_no }}</td>
+      <td>{{ customer.email }}</td>
+      <td>
+        <button (click)="deleteCustomer(customer.id)">Delete</button>
+        <button (click)="selectCustomer(customer)">Update</button>
+        <button (click)="selectCustomer(customer)">View</button>
+      </td>
+    </tr>
+  </table>
+
+  <br>
+  <form #f = "ngForm">
+    <label>Name</label>
+    <input type="text" name="name" [(ngModel)] = "selectedCustomer.name">
+    <br>
+    <label>Phone Number</label>
+    <input type="number" name="phone_no" [(ngModel)] = "selectedCustomer.phone_no">
+    <br>
+    <label>Email</label>
+    <input type="text" name="email" [(ngModel)] = "selectedCustomer.email">
+    <br>
+    <input type="button" (click)="createOrUpdateCustomer(f)" value="Create or Update Customer details">
+  </form>
+
+
+  <script>
+ $scope.reload = function()
+    {
+       location.reload(); 
+    }
+  </script>
+   
+    
